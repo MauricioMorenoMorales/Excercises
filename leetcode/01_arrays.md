@@ -79,3 +79,7 @@ func removeDuplicates(nums []int) int {
 	return k
 }
 ```
+
+# Searching data
+Para encontrar data se puede hacer una busqueda linear ir en cada elemento y en el peor de los escenarios seria una operacion O(N)
+Binary search es util pero solo con data sorteada, no conviene sortear primero ya que sortear requiere mas tiempo que una busqueda linear, a menos que vayas a buscar informacion muy seguido en ese caso si conviene sortear la data primero y hacer busquedas despues
