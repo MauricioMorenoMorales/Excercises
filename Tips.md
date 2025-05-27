@@ -19,3 +19,4 @@ func map(nums []int) []int {
 > Piensa si dos punteros en distintas posiciones al inicio pueden funcionar
 > Puedes hacer swap entre dos punteros
 > Manejar distintas velocidades de punteros, o dejar un puntero en el punto que se hara un swap o se fijara info
+> Prueba si funciona con sliding window tu algoritmo
