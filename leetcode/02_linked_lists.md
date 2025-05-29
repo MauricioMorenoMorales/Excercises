@@ -89,6 +89,12 @@ func (this *MyLinkedList) DeleteAtIndex(index int) {
 }
 ```
 
+# Double linked list
+Es una lista en la que los nodos tienen dos punteros uno para el next y otro para el prev
+
+## Agregar elemento a lista doblemente enlazada
+1 Linkea `cur->prev` y cur`cur->next`
+
 # Estrategias comunes
 
 ## Reverse linked list
@@ -170,10 +176,37 @@ func removeElement(head *ListNode, val int) *ListNode {
 }
 ```
 
+```go
+// El dummy pointer tambien sirve para crear listas enlazadas sin hacer el reverse
+func mergeTwoLists(list1, list2 *ListNode) *ListNode {
+	response := &ListNode{-1, nil}
+	currentNode := response
+	for list1 != nil && list2 != nil {
+		if list1.Val < list2.Val {
+			currentNode.Next = list1
+			list1 = list1.Next
+		} else {
+			currentNode.Next = list2
+			list2 = list2.Next
+		}
+		currentNode = currentNode.Next
+	}
+
+	if list1 != nil {
+		currentNode.Next = list1
+	} else if list2 != nil {
+		currentNode.Next = list2
+	}
+	return response.Next
+}
+
+```
+
 # Array technique
 Si vas a recorrer distintas direcciones y no mutaras la data o cambiaras direcciones es buena esta tecnica
 
 # ! Advanced themes to review
 Advanced recursive method to palindrome array
 https://leetcode.com/problems/palindrome-linked-list/editorial/
+
 

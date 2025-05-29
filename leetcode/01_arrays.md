@@ -89,61 +89,61 @@ func removeDuplicates(nums []int) int {
 En golang puedes seguir esta estrategia para moverte dentro de un array e ir cambiando de direcciones
 ```go
 func spiralOrder(matrix [][]int) []int {
-    var response []int
-    // Matrix dimensions
-    rightX, bottomY := len(matrix[0])-1, len(matrix)-1
-    leftX, topY := 0, 0
-    totalElements := (rightX + 1) * (bottomY + 1)
+	var response []int
+	// Matrix dimensions
+	rightX, bottomY := len(matrix[0])-1, len(matrix)-1
+	leftX, topY := 0, 0
+	totalElements := (rightX + 1) * (bottomY + 1)
 
-    // pointers
-    x, y := 0, 0
+	// pointers
+	x, y := 0, 0
 
-    // Direction variable: 0 = right, 1 = down, 2 = left, 3 = up
-    direction := 0
+	// Direction variable: 0 = right, 1 = down, 2 = left, 3 = up
+	direction := 0
 
-    // Logic
-    for len(response) < totalElements {
-        // Append the current element to the response
-        response = append(response, matrix[y][x])
+	// Logic
+	for len(response) < totalElements {
+		// Append the current element to the response
+		response = append(response, matrix[y][x])
 
-        // Move in the current direction
-        switch direction {
-        case 0: // Moving right
-            x++
-            if x > rightX {
-                x--
-                y++
-                topY++
-                direction = 1 // Change direction to down
-            }
-        case 1: // Moving down
-            y++
-            if y > bottomY {
-                y--
-                x--
-                rightX--
-                direction = 2 // Change direction to left
-            }
-        case 2: // Moving left
-            x--
-            if x < leftX {
-                x++
-                y--
-                bottomY--
-                direction = 3 // Change direction to up
-            }
-        case 3: // Moving up
-            y--
-            if y < topY {
-                y++
-                x++
-                leftX++
-                direction = 0 // Change direction to right
-            }
-        }
-    }
+		// Move in the current direction
+		switch direction {
+		case 0: // Moving right
+			x++
+			if x > rightX {
+				x--
+				y++
+				topY++
+				direction = 1 // Change direction to down
+			}
+		case 1: // Moving down
+			y++
+			if y > bottomY {
+				y--
+				x--
+				rightX--
+				direction = 2 // Change direction to left
+			}
+		case 2: // Moving left
+			x--
+			if x < leftX {
+				x++
+				y--
+				bottomY--
+				direction = 3 // Change direction to up
+			}
+		case 3: // Moving up
+			y--
+			if y < topY {
+				y++
+				x++
+				leftX++
+				direction = 0 // Change direction to right
+			}
+		}
+	}
 
-    return response
+	return response
 }
 ```
 
@@ -182,8 +182,6 @@ func longestCommonPrefix(strs []string) string {
 len = 7
 len-k = 4
 right := len(nums)-k
-
-
 ```
 # Searching data
 Para encontrar data se puede hacer una busqueda linear ir en cada elemento y en el peor de los escenarios seria una operacion O(N)

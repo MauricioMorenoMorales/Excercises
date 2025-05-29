@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 func main() {
@@ -46,56 +47,54 @@ func printLL(head *ListNode) {
 	fmt.Println("------------------------------------------------------------")
 }
 
+type Node struct {
+	Val  int
+	Next *Node
+}
+
+//! Non descending = ascending
+
 // *****************************************************************************************************
 
-// Encuentra el final de la primera mitad usando técnica tortuga y liebre
-func endOfFirstHalf(head *ListNode) *ListNode {
-	fast := head
-	slow := head
-
-	for fast.Next != nil && fast.Next.Next != nil {
-		fast = fast.Next.Next
-		slow = slow.Next
+func insert(aNode *Node, x int) *Node {
+	if aNode == nil {
+		response := &Node{Val: x}
+		response.Next = response
+		return response
 	}
-
-	return slow
-}
-
-// Revierte una lista enlazada
-func reverseList(head *ListNode) *ListNode {
-	var previous *ListNode
-
-	for current := head; current != nil; current = current.Next {
-		previous = &ListNode{Val: current.Val, Next: previous}
+	if aNode.Next == aNode {
+		node := &Node{Val: x, Next: aNode}
+		aNode.Next = node
+		return aNode
 	}
-
-	return previous
-}
-
-func isPalindrome(head *ListNode) bool {
-	if head == nil {
-		return true
-	}
-
-	// Encontrar el final de la primera mitad y revertir la segunda mitad
-	firstHalfEnd := endOfFirstHalf(head)
-	secondHalfStart := reverseList(firstHalfEnd.Next)
-
-	// Verificar si hay un palíndromo
-	result := true
-	firstPosition := head
-	secondPosition := secondHalfStart
-
-	for secondPosition != nil {
-		if firstPosition.Val != secondPosition.Val {
-			result = false
+	current := aNode
+	iterations := 0
+	maxValue := math.MinInt
+	for {
+		if current.Val <= x && x <= current.Next.Val {
 			break
 		}
-		firstPosition = firstPosition.Next
-		secondPosition = secondPosition.Next
-	}
 
-	// Restaurar la lista original y retornar el resultado
-	firstHalfEnd.Next = reverseList(secondHalfStart)
-	return result
+		// Same number cases
+		if current.Val == current.Next.Val {
+			break
+		}
+
+		if x == 0 {
+			if current.Next == aNode {
+				iterations++
+			}
+			if current.Val == maxValue && iterations == 2 {
+				break
+			}
+
+			//? Checks for max value
+			if current.Val > maxValue {
+				maxValue = current.Val
+			}
+		}
+	}
+	newNode := &Node{Val: x, Next: current.Next}
+	current.Next = newNode
+	return aNode
 }
