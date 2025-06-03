@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func main() {
 	fmt.Println("-------------------------------------------------")
+	fmt.Println([]int{1, 2, 3, 4}[:3+1])
 }
 
 /*
@@ -48,53 +48,31 @@ func printLL(head *ListNode) {
 }
 
 type Node struct {
-	Val  int
-	Next *Node
+	Val    int
+	Next   *Node
+	Random *Node
 }
 
 //! Non descending = ascending
 
 // *****************************************************************************************************
 
-func insert(aNode *Node, x int) *Node {
-	if aNode == nil {
-		response := &Node{Val: x}
-		response.Next = response
-		return response
-	}
-	if aNode.Next == aNode {
-		node := &Node{Val: x, Next: aNode}
-		aNode.Next = node
-		return aNode
-	}
-	current := aNode
-	iterations := 0
-	maxValue := math.MinInt
-	for {
-		if current.Val <= x && x <= current.Next.Val {
-			break
-		}
-
-		// Same number cases
-		if current.Val == current.Next.Val {
-			break
-		}
-
-		if x == 0 {
-			if current.Next == aNode {
-				iterations++
-			}
-			if current.Val == maxValue && iterations == 2 {
-				break
-			}
-
-			//? Checks for max value
-			if current.Val > maxValue {
-				maxValue = current.Val
-			}
+func containsNearbyDuplicate(nums []int, k int) bool {
+	hashMap := make(map[int]int)
+	for currentIndex, currentNumber := range nums {
+		if foundIndex, ok := hashMap[currentNumber]; ok && abs(currentIndex, foundIndex) <= k {
+			return true
+		} else {
+			hashMap[currentNumber] = currentIndex
 		}
 	}
-	newNode := &Node{Val: x, Next: current.Next}
-	current.Next = newNode
-	return aNode
+	return false
+}
+
+func abs(a, b int) int {
+	if a > b {
+		return a - b
+	} else {
+		return b - a
+	}
 }

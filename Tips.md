@@ -20,3 +20,50 @@ func map(nums []int) []int {
 > Puedes hacer swap entre dos punteros
 > Manejar distintas velocidades de punteros, o dejar un puntero en el punto que se hara un swap o se fijara info
 > Prueba si funciona con sliding window tu algoritmo
+
+# Iterations
+> Si te enfrentas a ciclos infinitos preguntate si nay ciclos y si puedes usar la tecnica de liebre y tortuga
+
+# Numbers
+> Si trabajaras con digitos no necesitas hacer split o stringify, puedes usar esta tecnica
+
+```go
+func getNext(n int) int {
+    totalSum := 0
+    for n > 0 {
+        digit := n % 10 // Extrae el valor del primer digito
+        n /= 10 // Reduce el valor del primer digito del numero original
+        totalSum += digit * digit
+    }
+    return totalSum
+}
+```
+
+
+# Comparaciones
+
+Cuando comparas cosas puedes usar la tecnica de transformar ambos datos a una abstraccion y compararlos como en este ejemplo
+
+```go
+func transformString(s string) string {
+	indexMapping := make(map[rune]int)
+	var newStr []string
+
+	for i, c := range s {
+		if _, exists := indexMapping[c]; !exists {
+			indexMapping[c] = i
+		}
+		newStr = append(newStr, strconv.Itoa(indexMapping[c]))
+	}
+
+	return strings.Join(newStr, " ")
+}
+
+func isIsomorphic(s string, t string) bool {
+	return transformString(s) == transformString(t)
+}
+
+```
+
+# Multiples respuestas
+Considera guardarlos en un array o pensar en arrays en los datos que usas

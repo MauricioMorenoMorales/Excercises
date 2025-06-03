@@ -1,16 +1,17 @@
-class ListNode {
-  val: number
-  next: ListNode | null
-  constructor(val?: number, next?: ListNode | null) {
-    this.val = val === undefined ? 0 : val
-    this.next = next === undefined ? null : next
-  }
-}
+function isHappy(n: number): boolean {
+  let sumOfDigits = n
+  let iterations = 0
 
-function findTheDifference(s: string, t: string): string {
-  
-  for (let i = 0; i < s.length || i < t.length; i++) {
-    if (s[i] !== t[i]) return t[i]
+  while (sumOfDigits != 1) {
+    sumOfDigits = sumOfDigits
+      .toString()
+      .split('')
+      .map(element => Number(element) ** 2)
+      .reduce((response, current) => response + current)
+
+      if (iterations > 20) return false
+
+      iterations++
   }
-  return ""
+  return true
 }

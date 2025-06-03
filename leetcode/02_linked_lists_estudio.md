@@ -1,5 +1,9 @@
 # Hacerle flattening a una lista doblemente enlazada
 
+#  Ejercicios a practicar
+https://leetcode.com/problems/copy-list-with-random-pointer/
+
+
 ```go
 func flatten(head *Node) *Node {
 	if head == nil {
