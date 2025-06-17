@@ -6,7 +6,8 @@ import (
 
 func main() {
 	fmt.Println("-------------------------------------------------")
-	fmt.Println([]int{1, 2, 3, 4}[:3+1])
+	string := "abcabcabcabc"
+	fmt.Println(string[0:2])
 }
 
 /*
@@ -22,11 +23,6 @@ func min(a, b int) int {
 	} else {
 		return b
 	}
-}
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
 }
 
 func createListNode(numbers []int) *ListNode {
@@ -47,32 +43,36 @@ func printLL(head *ListNode) {
 	fmt.Println("------------------------------------------------------------")
 }
 
-type Node struct {
-	Val    int
-	Next   *Node
-	Random *Node
+type ListNode struct {
+	Val  int
+	Next *ListNode
 }
 
 //! Non descending = ascending
 
-// *****************************************************************************************************
-
-func containsNearbyDuplicate(nums []int, k int) bool {
-	hashMap := make(map[int]int)
-	for currentIndex, currentNumber := range nums {
-		if foundIndex, ok := hashMap[currentNumber]; ok && abs(currentIndex, foundIndex) <= k {
-			return true
-		} else {
-			hashMap[currentNumber] = currentIndex
-		}
-	}
-	return false
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
-func abs(a, b int) int {
-	if a > b {
-		return a - b
-	} else {
-		return b - a
+type Node struct {
+	Val  int
+	Next *Node
+	Prev *Node
+}
+
+// *****************************************************************************************************
+
+func checkIfPangram(sentence string) bool {
+	hashMap := make(map[rune]bool)
+	for _, letter := range sentence {
+		hashMap[letter] = true
 	}
+
+	letterCount := 0
+	for range hashMap {
+		letterCount++
+	}
+	return letterCount == 26
 }

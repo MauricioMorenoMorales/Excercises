@@ -41,3 +41,66 @@ func minSubArrayLen(target int, nums []int) int {
 }
 
 ```
+
+# TwoPointer replacing elements technique
+
+Remueve los elementos que aparecen mas de dos veces, dejando solo dos elementos
+```go
+func removeDuplicates(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+
+	i := 1
+	j := 1
+	count := 1
+
+	for i < len(nums) {
+		if nums[i] == nums[i-1] {
+			count++
+			if count > 2 {
+				i++
+				continue
+			}
+		} else {
+			count = 1
+		}
+		nums[j] = nums[i]
+		j++
+		i++
+	}
+
+	return j
+}
+
+```
+
+# Sliding window
+
+Longest substring without repeating characters
+
+```go
+func lengthOfLongestSubstring(s string) int {
+	chars := make(map[byte]int)
+
+	left := 0
+	right := 0
+
+	res := 0
+	for right < len(s) {
+		rightCharacter := s[right]
+		chars[rightCharacter]++
+
+		for chars[rightCharacter] > 1 {
+			l := s[left]
+			chars[l]--
+			left++
+		}
+
+		res = max(res, right-left+1)
+		right++
+	}
+
+	return res
+}
+```

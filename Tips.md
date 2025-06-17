@@ -18,6 +18,7 @@ func map(nums []int) []int {
 > Piensa si dos punteros pueden resolver el problema
 > Piensa si dos punteros en distintas posiciones al inicio pueden funcionar
 > Puedes hacer swap entre dos punteros
+> A veces el swap se puede hacer entre dos punteros en el mismo lugar, empiezas ambos punteros en el mismo lugar y dependiendo las condiciones vas dejando uno atras mientras llenas los otrso
 > Manejar distintas velocidades de punteros, o dejar un puntero en el punto que se hara un swap o se fijara info
 > Prueba si funciona con sliding window tu algoritmo
 
@@ -67,3 +68,41 @@ func isIsomorphic(s string, t string) bool {
 
 # Multiples respuestas
 Considera guardarlos en un array o pensar en arrays en los datos que usas
+
+
+
+
+
+
+
+
+# Goals
+🟢 Nivel 1: Fundamentos – Muy recomendados para empezar
+The LeetCode Beginner’s Guide 🧭
+√ Array and String
+√ Arrays 101
+√? Hash Table
+Queue & Stack
+√ Linked List
+
+🔵 Nivel 2: Intermedio – Introduce técnicas clave
+Binary Tree
+Binary Search Tree
+N-ary Tree
+Binary Search
+Sorting
+Recursion
+Recursion II
+Bit Manipulation
+
+🟣 Nivel 3: Avanzado – Conceptos más complejos
+Heap
+Graph
+Trie
+Dynamic Programming
+Decision Tree
+
+🟠 Extras (no algorítmicos pero útiles en tech interviews o backend)
+SQL Language
+Machine Learning 101
+Systems Design
