@@ -58,21 +58,10 @@ type TreeNode struct {
 
 type Node struct {
 	Val  int
-	Next *Node
 	Prev *Node
+	Next *Node
 }
 
 // *****************************************************************************************************
 
-func checkIfPangram(sentence string) bool {
-	hashMap := make(map[rune]bool)
-	for _, letter := range sentence {
-		hashMap[letter] = true
-	}
 
-	letterCount := 0
-	for range hashMap {
-		letterCount++
-	}
-	return letterCount == 26
-}

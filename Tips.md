@@ -69,7 +69,28 @@ func isIsomorphic(s string, t string) bool {
 # Multiples respuestas
 Considera guardarlos en un array o pensar en arrays en los datos que usas
 
+# En golang puedes importar librerias de estructuras de datos
 
+import linkedListStack "github.com/emirpasic/gods/stacks/linkedliststack"
+
+
+```go
+import linkedListStak "github.com/emirpasic/gods/stacks/linkedliststack"
+
+func printLinkedListInReverse(head ImmutableListNode) {
+	stack := linkedListStak.New()
+	for head != nil {
+		stack.Push(head)
+		head = head.getNext()
+	}
+
+	for !stack.Empty() {
+		pop, _ := stack.Pop()
+		node := pop.(ImmutableListNode)
+		node.printValue()
+	}
+}
+```
 
 
 
