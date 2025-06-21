@@ -87,32 +87,10 @@ func getLettersHashmap(letters []byte) map[byte]int {
 	return hashMap
 }
 
-func isValidWord(word string, letterCount map[byte]int) bool {
-	letterCountCopy := make(map[byte]int)
-	for k, v := range letterCount {
-		letterCountCopy[k] = v
-	}
-	for _, letter := range word {
-		if count, ok := letterCountCopy[byte(letter)]; !ok || count <= 0 {
-			return false
-		}
-		letterCountCopy[byte(letter)]--
-	}
-	return true
-}
-
 func getWordValue(word string, scoresMap map[byte]int) int {
 	var response int
 	for _, v := range word {
 		response += scoresMap[byte(v)]
-	}
-	return response
-}
-
-func sumElements(numbers []int) int {
-	var response int
-	for _, number := range numbers {
-		response += number
 	}
 	return response
 }
